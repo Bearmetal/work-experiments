@@ -1,5 +1,7 @@
 <?php
-	require 'vendor/autoload.php';
+	require '/vendor/autoload.php';
+    require '/models/page.php';
+    
 	Mustache_Autoloader::register();
 
 	$m = new Mustache_Engine(array(
@@ -12,6 +14,8 @@
 	    }
 		));
 
+    $modPage = new Page();
+    
 	$tpl = $m->loadTemplate('home');
-	echo $tpl->render(array('planet' => 'World')); // "Hello World!"
+	echo $tpl->render($modPage->getPage); // "Hello World!"
 ?>
